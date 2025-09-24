@@ -20,7 +20,7 @@ export function F1LoadingScreen({ onLoadingComplete }: F1LoadingScreenProps) {
   if (!isAnimating) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-speed-black">
+    <div className="fixed inset-0 z-50 bg-speed-black">
       {/* Racing stripes background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-racing-red to-transparent transform -translate-y-1/2" />
@@ -29,7 +29,7 @@ export function F1LoadingScreen({ onLoadingComplete }: F1LoadingScreenProps) {
       </div>
 
       {/* F1 Car Animation */}
-      <div className="relative w-128 h-64 animate-f1-loading">
+      <div className="absolute top-1/2 transform -translate-y-1/2 w-64 h-32 animate-f1-loading">
         <img 
           src={loadingCarImage} 
           alt="F1 Car Loading"

@@ -99,14 +99,17 @@ export default {
         /* F1 Racing Animations */
         "f1-loading": {
           "0%": {
-            transform: "translateX(-200px)",
+            left: "-300px",
             opacity: "0"
           },
-          "20%, 80%": {
+          "10%": {
+            opacity: "1"
+          },
+          "90%": {
             opacity: "1"
           },
           "100%": {
-            transform: "translateX(calc(100vw + 200px))",
+            left: "calc(100vw + 300px)",
             opacity: "0"
           }
         },
