@@ -120,7 +120,7 @@
     
     /* Dark Mode Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--speed-black)) 0%, hsl(var(--racing-red)) 100%);
-    --gradient-speed: linear-gradient(90deg, hsl(var(--speed-black)) 0%, hsl(var(--racing-red-dark)) 50%, hsl(var(--racing-red)) 100%);
+    --gradient-speed: linear-gradient(90deg, hsl(var(--racing-red)) 0%, hsl(var(--racing-red-dark)) 50%, hsl(var(--carbon-gray)) 100%);
     --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--carbon-gray)) 100%);
     
     /* Racing Shadows (enhanced for dark) */

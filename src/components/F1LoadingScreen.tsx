@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import loadingCarImage from "@/assets/f1-loading-car.png";
+import loadingCarImage from "@/assets/loader-car.png";
 
 interface F1LoadingScreenProps {
   onLoadingComplete: () => void;
@@ -29,11 +29,11 @@ export function F1LoadingScreen({ onLoadingComplete }: F1LoadingScreenProps) {
       </div>
 
       {/* F1 Car Animation */}
-      <div className="relative w-20 h-10 animate-f1-loading">
+      <div className="relative w-128 h-64 animate-f1-loading">
         <img 
           src={loadingCarImage} 
           alt="F1 Car Loading"
-          className="w-full h-full object-contain filter brightness-0 invert"
+          className="w-full h-full object-contain"
         />
       </div>
 

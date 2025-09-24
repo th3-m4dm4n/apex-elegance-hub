@@ -1,157 +1,119 @@
-import { Flag, Github, Twitter, Linkedin, Instagram, Mail, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Button } from "./ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
-export function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-  ];
-
-  const footerLinks = {
-    "Work": [
-      { name: "Publications", href: "/publications" },
-      { name: "Projects", href: "/projects" },
-      { name: "Gallery", href: "/gallery" },
-      { name: "Research", href: "#" }
-    ],
-    "Connect": [
-      { name: "LinkedIn", href: "#" },
-      { name: "GitHub", href: "#" },
-      { name: "Twitter", href: "#" },
-      { name: "Email", href: "#" }
-    ],
-    "Resources": [
-      { name: "Blog", href: "#" },
-      { name: "Documentation", href: "#" },
-      { name: "Downloads", href: "#" },
-      { name: "API Reference", href: "#" }
-    ]
-  };
-
-
+const Footer = () => {
   return (
-    <footer className="bg-speed-black text-pit-white border-t border-carbon-gray">
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Brand Section */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
-              <Flag className="h-8 w-8 text-racing-red" />
-              <span className="text-xl font-bold bg-gradient-speed bg-clip-text text-transparent">
-                MAKARAND RELE
-              </span>
-            </div>
-            <p className="text-pit-white/70 leading-relaxed mb-6 max-w-sm">
-              F1 Technology Enthusiast & Data Analytics Expert. Passionate about the intersection 
-              of motorsport innovation and cutting-edge technology.
+    <footer className="bg-background border-t py-12 text-foreground">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="col-span-1">
+            <h3 className="text-lg font-bold mb-4 text-red-500">
+              MAKARAND RELE
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              A passionate Frontend Developer creating modern and responsive web
+              applications.
             </p>
-            
-            {/* Social Links */}
-            <div className="flex space-x-3">
-              {socialLinks.map((social, index) => {
-                const IconComponent = social.icon;
-                return (
-                  <Button
-                    key={index}
-                    variant="ghost"
-                    size="sm"
-                    className="p-2 text-pit-white/70 hover:text-racing-red hover:bg-racing-red/10 transition-colors duration-300"
-                    aria-label={social.label}
-                  >
-                    <IconComponent className="h-5 w-5" />
-                  </Button>
-                );
-              })}
+            <div className="flex space-x-4 mt-4">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a
+                      href="https://github.com/th3-m4dm4n"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="outline" size="icon">
+                        <Github className="h-4 w-4" />
+                      </Button>
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>GitHub</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a
+                      href="https://www.linkedin.com/in/makarand-rele-69323b286/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="outline" size="icon">
+                        <Linkedin className="h-4 w-4" />
+                      </Button>
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>LinkedIn</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              {/* <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a
+                      href="https://www.instagram.com/makarand_rele/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="outline" size="icon">
+                        <Instagram className="h-4 w-4" />
+                      </Button>
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Instagram</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a
+                      href="https://twitter.com/rele_makarand"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="outline" size="icon">
+                        <Twitter className="h-4 w-4" />
+                      </Button>
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Twitter</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider> */}
             </div>
           </div>
-
-          {/* Footer Links */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h3 className="font-bold text-pit-white mb-4 text-lg">
-                {category}
-              </h3>
-              <ul className="space-y-3">
-                {links.map((link, index) => (
-                  <li key={index}>
-                    {link.href.startsWith("/") ? (
-                      <Link
-                        to={link.href}
-                        className="text-pit-white/70 hover:text-racing-red transition-colors duration-300 flex items-center group"
-                      >
-                        {link.name}
-                      </Link>
-                    ) : (
-                      <a
-                        href={link.href}
-                        className="text-pit-white/70 hover:text-racing-red transition-colors duration-300 flex items-center group"
-                      >
-                        {link.name}
-                        {!link.href.startsWith("#") && (
-                          <ExternalLink className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        )}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="col-span-1">
+            <h3 className="text-lg font-bold mb-4">Contact Me</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Feel free to reach out for collaborations or just a friendly chat.
+            </p>
+            <a href="mailto:mccarrera44@gmail.com">
+              <Button variant="outline">Email Me</Button>
+            </a>
+          </div>
         </div>
-
-        {/* Newsletter Section */}
-        <div className="bg-carbon-gray/50 rounded-xl p-6 mb-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-4 md:mb-0">
-              <h3 className="font-bold text-pit-white text-lg mb-2">
-                Stay Updated with F1 Tech Insights
-              </h3>
-              <p className="text-pit-white/70">
-                Get the latest research, analysis, and project updates delivered to your inbox.
-              </p>
-            </div>
-            <div className="flex space-x-3">
-              <Button
-                variant="ghost"
-                className="text-pit-white border border-pit-white/30 hover:border-racing-red hover:bg-racing-red/10 hover:text-racing-red transition-all duration-300"
-              >
-                <Mail className="mr-2 h-4 w-4" />
-                Subscribe
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-carbon-gray pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="text-pit-white/60 text-sm mb-4 md:mb-0">
-              © {currentYear} Makarand Rele. All rights reserved.
-            </div>
-            
-            <div className="flex space-x-6 text-sm">
-              <button className="text-pit-white/60 hover:text-racing-red transition-colors duration-300">
-                Privacy Policy
-              </button>
-              <button className="text-pit-white/60 hover:text-racing-red transition-colors duration-300">
-                Terms of Service
-              </button>
-              <button className="text-pit-white/60 hover:text-racing-red transition-colors duration-300">
-                Cookie Policy
-              </button>
-            </div>
-          </div>
+        <div className="border-t mt-8 pt-6 text-center text-sm text-muted-foreground">
+          <p>
+            &copy; {new Date().getFullYear()} Makarand Rele. All rights
+            reserved.
+          </p>
         </div>
       </div>
-
-      {/* Racing stripe decoration */}
-      <div className="h-1 bg-gradient-speed" />
     </footer>
   );
-}
+};
+
+export { Footer };
