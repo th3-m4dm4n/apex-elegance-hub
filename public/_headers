@@ -1,0 +1,22 @@
+# For Netlify hosting
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+
+# JavaScript modules
+*.js
+  Content-Type: text/javascript
+
+*.mjs
+  Content-Type: text/javascript
+
+*.ts
+  Content-Type: text/javascript
+
+# CSS files
+*.css
+  Content-Type: text/css
+
+# JSON files
+*.json
+  Content-Type: application/json

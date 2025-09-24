@@ -1,0 +1,25 @@
+{
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "headers": { "cache-control": "s-maxage=31536000,immutable" },
+      "continue": true
+    },
+    {
+      "src": "/(.*\\.js)",
+      "headers": { "content-type": "text/javascript" }
+    },
+    {
+      "src": "/(.*\\.mjs)",
+      "headers": { "content-type": "text/javascript" }
+    },
+    {
+      "src": "/(.*\\.css)",
+      "headers": { "content-type": "text/css" }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
