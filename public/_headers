@@ -1,22 +1,32 @@
-# For Netlify hosting
+# Headers for all files
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
 
-# JavaScript modules
-*.js
+# JavaScript and module files
+/assets/*.js
+  Content-Type: text/javascript
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
   Content-Type: text/javascript
 
-*.mjs
-  Content-Type: text/javascript
-
-*.ts
+/*.mjs
   Content-Type: text/javascript
 
 # CSS files
-*.css
+/assets/*.css
+  Content-Type: text/css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
   Content-Type: text/css
 
 # JSON files
-*.json
+/*.json
   Content-Type: application/json
+
+# HTML files
+/*.html
+  Content-Type: text/html
