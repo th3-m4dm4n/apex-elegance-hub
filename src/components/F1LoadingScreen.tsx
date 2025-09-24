@@ -29,7 +29,7 @@ export function F1LoadingScreen({ onLoadingComplete }: F1LoadingScreenProps) {
       </div>
 
       {/* F1 Car Animation */}
-      <div className="absolute top-1/2 transform -translate-y-1/2 w-64 h-32 animate-f1-loading">
+      <div className="absolute top-1/2 transform -translate-y-1/2 w-128 h-64 animate-f1-loading">
         <img 
           src={loadingCarImage} 
           alt="F1 Car Loading"
