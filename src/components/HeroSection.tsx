@@ -1,17 +1,12 @@
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroCarImage from "@/assets/f1-hero-car.jpg";
 
 export function HeroSection() {
-  const scrollToPublications = () => {
-    const element = document.getElementById("publications");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with F1 car image */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-hero opacity-90 z-10" />
@@ -33,35 +28,38 @@ export function HeroSection() {
       <div className="relative z-30 text-center px-4 max-w-4xl mx-auto">
         <div className="animate-fade-up">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-pit-white mb-6 tracking-tight">
-            FORMULA
+            MAKARAND
             <span className="block bg-gradient-speed bg-clip-text text-transparent animate-speed-pulse">
-              MOTORSPORT
+              RELE
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-pit-white/90 mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-up delay-300">
-            Experience the thrill of Formula 1 through cutting-edge research, 
-            innovative projects, and stunning visuals from the world's premier motorsport.
+            F1 Technology Enthusiast & Data Analytics Expert. Exploring the intersection of 
+            motorsport innovation, machine learning, and high-performance engineering.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up delay-500">
-            <Button
-              onClick={scrollToPublications}
-              size="lg"
-              className="bg-racing-red hover:bg-racing-red-dark text-pit-white font-bold py-4 px-8 shadow-glow transition-all duration-300 hover:scale-105"
-            >
-              Explore Publications
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link to="/publications">
+              <Button
+                size="lg"
+                className="bg-racing-red hover:bg-racing-red-dark text-pit-white font-bold py-4 px-8 shadow-glow transition-all duration-300 hover:scale-105"
+              >
+                View My Work
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
 
-            <Button
-              variant="ghost"
-              size="lg"
-              className="text-pit-white border-2 border-pit-white/30 hover:border-pit-white hover:bg-pit-white/10 font-bold py-4 px-8 transition-all duration-300"
-            >
-              <Play className="mr-2 h-5 w-5" />
-              Watch Highlights
-            </Button>
+            <Link to="/projects">
+              <Button
+                variant="ghost"
+                size="lg"
+                className="text-pit-white border-2 border-pit-white/30 hover:border-pit-white hover:bg-pit-white/10 font-bold py-4 px-8 transition-all duration-300"
+              >
+                <Play className="mr-2 h-5 w-5" />
+                See Projects
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

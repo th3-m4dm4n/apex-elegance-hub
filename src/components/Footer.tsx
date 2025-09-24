@@ -1,5 +1,6 @@
 import { Flag, Github, Twitter, Linkedin, Instagram, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,34 +13,26 @@ export function Footer() {
   ];
 
   const footerLinks = {
-    "Research": [
-      { name: "Publications", href: "#publications" },
-      { name: "Technical Reports", href: "#" },
-      { name: "Data Analysis", href: "#" },
-      { name: "White Papers", href: "#" }
+    "Work": [
+      { name: "Publications", href: "/publications" },
+      { name: "Projects", href: "/projects" },
+      { name: "Gallery", href: "/gallery" },
+      { name: "Research", href: "#" }
     ],
-    "Projects": [
-      { name: "Analytics Dashboard", href: "#projects" },
-      { name: "AI Models", href: "#" },
-      { name: "Simulations", href: "#" },
-      { name: "Open Source", href: "#" }
+    "Connect": [
+      { name: "LinkedIn", href: "#" },
+      { name: "GitHub", href: "#" },
+      { name: "Twitter", href: "#" },
+      { name: "Email", href: "#" }
     ],
     "Resources": [
-      { name: "Gallery", href: "#gallery" },
+      { name: "Blog", href: "#" },
       { name: "Documentation", href: "#" },
-      { name: "API Reference", href: "#" },
-      { name: "Downloads", href: "#" }
+      { name: "Downloads", href: "#" },
+      { name: "API Reference", href: "#" }
     ]
   };
 
-  const scrollToSection = (id: string) => {
-    if (id.startsWith("#")) {
-      const element = document.getElementById(id.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
 
   return (
     <footer className="bg-speed-black text-pit-white border-t border-carbon-gray">
@@ -51,12 +44,12 @@ export function Footer() {
             <div className="flex items-center space-x-2 mb-6">
               <Flag className="h-8 w-8 text-racing-red" />
               <span className="text-xl font-bold bg-gradient-speed bg-clip-text text-transparent">
-                F1 MOTORSPORT
+                MAKARAND RELE
               </span>
             </div>
             <p className="text-pit-white/70 leading-relaxed mb-6 max-w-sm">
-              Exploring the cutting edge of Formula 1 technology through research, 
-              innovation, and data-driven insights from the world's premier motorsport.
+              F1 Technology Enthusiast & Data Analytics Expert. Passionate about the intersection 
+              of motorsport innovation and cutting-edge technology.
             </p>
             
             {/* Social Links */}
@@ -87,15 +80,24 @@ export function Footer() {
               <ul className="space-y-3">
                 {links.map((link, index) => (
                   <li key={index}>
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-pit-white/70 hover:text-racing-red transition-colors duration-300 text-left flex items-center group"
-                    >
-                      {link.name}
-                      {!link.href.startsWith("#") && (
-                        <ExternalLink className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      )}
-                    </button>
+                    {link.href.startsWith("/") ? (
+                      <Link
+                        to={link.href}
+                        className="text-pit-white/70 hover:text-racing-red transition-colors duration-300 flex items-center group"
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-pit-white/70 hover:text-racing-red transition-colors duration-300 flex items-center group"
+                      >
+                        {link.name}
+                        {!link.href.startsWith("#") && (
+                          <ExternalLink className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        )}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -130,7 +132,7 @@ export function Footer() {
         <div className="border-t border-carbon-gray pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-pit-white/60 text-sm mb-4 md:mb-0">
-              © {currentYear} F1 Motorsport Research. All rights reserved.
+              © {currentYear} Makarand Rele. All rights reserved.
             </div>
             
             <div className="flex space-x-6 text-sm">

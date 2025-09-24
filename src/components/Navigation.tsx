@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Menu, X, Flag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Link, useLocation } from "react-router-dom";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,19 +18,11 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
-  };
-
   const navItems = [
-    { name: "Home", id: "home" },
-    { name: "Publications", id: "publications" },
-    { name: "Projects", id: "projects" },
-    { name: "Gallery", id: "gallery" },
+    { name: "Home", path: "/" },
+    { name: "Publications", path: "/publications" },
+    { name: "Projects", path: "/projects" },
+    { name: "Gallery", path: "/gallery" },
   ];
 
   return (
@@ -42,23 +36,27 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => scrollToSection("home")}>
+          <Link to="/" className="flex items-center space-x-2">
             <Flag className="h-8 w-8 text-racing-red" />
             <span className="text-xl font-bold bg-gradient-speed bg-clip-text text-transparent">
-              F1 MOTORSPORT
+              MAKARAND RELE
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-racing-red transition-colors duration-300 font-medium tracking-wide"
+                to={item.path}
+                className={`transition-colors duration-300 font-medium tracking-wide ${
+                  location.pathname === item.path
+                    ? "text-racing-red"
+                    : "text-foreground hover:text-racing-red"
+                }`}
               >
                 {item.name}
-              </button>
+              </Link>
             ))}
             <ThemeToggle />
           </div>
@@ -86,13 +84,18 @@ export function Navigation() {
           <div className="md:hidden bg-background border-t border-border">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <button
+                <Link
                   key={item.name}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-3 py-2 text-base font-medium text-foreground hover:text-racing-red hover:bg-racing-red/10 rounded-md transition-colors duration-300"
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`block w-full text-left px-3 py-2 text-base font-medium rounded-md transition-colors duration-300 ${
+                    location.pathname === item.path
+                      ? "text-racing-red bg-racing-red/10"
+                      : "text-foreground hover:text-racing-red hover:bg-racing-red/10"
+                  }`}
                 >
                   {item.name}
-                </button>
+                </Link>
               ))}
             </div>
           </div>
