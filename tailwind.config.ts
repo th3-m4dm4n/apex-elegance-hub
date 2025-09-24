@@ -57,6 +57,22 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        /* F1 Racing Colors */
+        "racing-red": "hsl(var(--racing-red))",
+        "racing-red-dark": "hsl(var(--racing-red-dark))",
+        "speed-black": "hsl(var(--speed-black))",
+        "carbon-gray": "hsl(var(--carbon-gray))",
+        "pit-white": "hsl(var(--pit-white))",
+      },
+      backgroundImage: {
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-speed": "var(--gradient-speed)",
+        "gradient-card": "var(--gradient-card)",
+      },
+      boxShadow: {
+        "racing": "var(--shadow-racing)",
+        "speed": "var(--shadow-speed)",
+        "glow": "var(--shadow-glow)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +96,58 @@ export default {
             height: "0",
           },
         },
+        /* F1 Racing Animations */
+        "f1-loading": {
+          "0%": { 
+            transform: "translateX(-100px)",
+            opacity: "0"
+          },
+          "50%": { 
+            opacity: "1"
+          },
+          "100%": { 
+            transform: "translateX(calc(100vw + 100px))",
+            opacity: "0"
+          }
+        },
+        "fade-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(30px)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)"
+          }
+        },
+        "slide-in-left": {
+          "0%": {
+            opacity: "0",
+            transform: "translateX(-50px)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateX(0)"
+          }
+        },
+        "speed-pulse": {
+          "0%, 100%": {
+            transform: "scale(1)",
+            filter: "brightness(1)"
+          },
+          "50%": {
+            transform: "scale(1.05)",
+            filter: "brightness(1.2)"
+          }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "f1-loading": "f1-loading 2s ease-in-out",
+        "fade-up": "fade-up 0.6s ease-out",
+        "slide-in-left": "slide-in-left 0.8s ease-out",
+        "speed-pulse": "speed-pulse 2s ease-in-out infinite",
       },
     },
   },
